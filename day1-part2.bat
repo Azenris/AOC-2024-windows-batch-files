@@ -24,8 +24,7 @@ for /l %%a in ( 0, 1, %numCount% ) do (
 	for %%i in (!left[%%a]!) do set rightValue=!right[%%i]!
 
 	if not "!rightValue!" == "" (
-		set /a temp = !left[%%a]! * !rightValue!
-		set /a total += !temp!
+		set /a total += !left[%%a]! * !rightValue!
 	)
 )
 
