@@ -12,7 +12,7 @@ for /f "eol= tokens=1-2 delims= " %%a in (%input%) do (
 
 set /a leftNumCount = 0
 
-for /F "usebackq tokens=1 delims= " %%a in (`sort %tempFile%`) do (
+for /f "usebackq tokens=1 delims= " %%a in (`sort %tempFile%`) do (
 	set /a left[!leftNumCount!] = %%a
 	set /a leftNumCount += 1
 )
@@ -26,7 +26,7 @@ for /f "eol= tokens=1-2 delims= " %%a in (%input%) do (
 
 set /a rightNumCount = 0
 
-for /F "usebackq tokens=1 delims= " %%a in (`sort %tempFile%`) do (
+for /f "usebackq tokens=1 delims= " %%a in (`sort %tempFile%`) do (
 	set /a right[!rightNumCount!] = %%a
 	set /a rightNumCount += 1
 )
@@ -42,7 +42,8 @@ for /l %%a in ( 0, 1, %totalNums% ) do (
 
 echo TOTAL: %total%
 
-del "%tempFile%"
+if not "%tempFile%" == "" del "%tempFile%"
+
 exit /b
 
 :: get_unique_file()
