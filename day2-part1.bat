@@ -62,18 +62,10 @@ exit /b
 set /a %3=0
 exit /b
 
-:: abs()
-:: arg[%1]: value
-:: arg[%2]: output variable, eg. absVal
-:abs
-if %1 geq 0 ( set rtn = %1 ) else ( set /a rtn = 0 - %1 )
-set "%~2=%rtn%"
-exit /b
-
 :: sign()
 :: arg[%1]: value
 :: arg[%2]: output variable, eg. signVal
 :sign
-if %1 equ 0 ( set rtn = 0 ) else ( if %1 gtr 0 ( set /a rtn = 1 ) else ( set /a rtn = -1 ) )
+if %1 equ 0 ( set /a rtn = 0 ) else ( if %1 gtr 0 ( set /a rtn = 1 ) else ( set /a rtn = -1 ) )
 set "%~2=%rtn%"
 exit /b
